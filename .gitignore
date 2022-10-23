@@ -4,3 +4,4 @@ specs.txt
 *.rvm
 *.jar
 *.class
+props/classes

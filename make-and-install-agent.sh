@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( cd $( dirname $0 ) && pwd )
 
-cd ${SCRIPT_DIR}/javamop-agent-bundle
+cd ${SCRIPT_DIR}
 
 echo "Creating agent..."
 bash make-agent.sh props agents quiet

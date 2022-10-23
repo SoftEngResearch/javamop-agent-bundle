@@ -1,1 +1,7 @@
 specs.txt
+
+*.aj
+*.rvm
+*.jar
+*.class
+props/classes

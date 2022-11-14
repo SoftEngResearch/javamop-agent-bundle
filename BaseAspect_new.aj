@@ -21,5 +21,6 @@ public aspect BaseAspect {
   !within(org.powermock..*) &&
   !within(org.easymock..*) &&
   !within(com.mockrunner..*) &&
+  !within(org.testing..*) &&
   !within(org.jmock..*);
 }

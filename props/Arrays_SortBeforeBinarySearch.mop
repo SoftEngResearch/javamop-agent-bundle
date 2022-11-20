@@ -33,10 +33,10 @@ Arrays_SortBeforeBinarySearch(Object[] arr) {
 		this.fromIndex = 0;
 		this.toIndex = arr.length;
 	}
-	event sort1 before(Object[] arr, int from, int to) :
-		call(void Arrays.sort(Object[], int, int)) && args(arr, from, to) {
+	event sort1 before(Object[] arr, int from, int dest) :
+		call(void Arrays.sort(Object[], int, int)) && args(arr, from, dest) {
 		this.fromIndex = from;
-		this.toIndex = to;
+		this.toIndex = dest;
 	}
 
 	event sort2 before(Object[] arr, Comparator comp2) :
@@ -45,10 +45,10 @@ Arrays_SortBeforeBinarySearch(Object[] arr) {
 		this.toIndex = arr.length;
 		this.comp = comp2;
 	}
-	event sort2 before(Object[] arr, int from, int to, Comparator comp2) :
-		call(void Arrays.sort(Object[], int, int, Comparator)) && args(arr, from, to, comp2) {
+	event sort2 before(Object[] arr, int from, int dest, Comparator comp2) :
+		call(void Arrays.sort(Object[], int, int, Comparator)) && args(arr, from, dest, comp2) {
 		this.fromIndex = from;
-		this.toIndex = to;
+		this.toIndex = dest;
 		this.comp = comp2;
 	}
 
@@ -61,19 +61,19 @@ Arrays_SortBeforeBinarySearch(Object[] arr) {
 		call(int Arrays.binarySearch(Object[], Object)) &&
 		args(arr, ..) &&
 		condition(this.fromIndex <= 0 && arr.length <= this.toIndex) {}
-	event bsearch1 before(Object[] arr, int from, int to) :
+	event bsearch1 before(Object[] arr, int from, int dest) :
 		call(int Arrays.binarySearch(Object[], int, int, Object)) &&
-		args(arr, from, to, ..) &&
-		condition(this.fromIndex <= from && to <= this.toIndex) {}
+		args(arr, from, dest, ..) &&
+		condition(this.fromIndex <= from && dest <= this.toIndex) {}
 
 	event bsearch2 before(Object[] arr, Comparator comp2) :
 		call(int Arrays.binarySearch(Object[], Object, Comparator)) &&
 		args(arr, .., comp2) &&
 		condition(this.fromIndex <= 0 && arr.length <= this.toIndex && this.comp == comp2) {}
-	event bsearch2 before(Object[] arr, int from, int to, Comparator comp2) :
+	event bsearch2 before(Object[] arr, int from, int dest, Comparator comp2) :
 		call(int Arrays.binarySearch(Object[], int, int, Object, Comparator)) &&
-		args(arr, from, to, .., comp2) &&
-		condition(this.fromIndex <= from && to <= this.toIndex && this.comp == comp2) {}
+		args(arr, from, dest, .., comp2) &&
+		condition(this.fromIndex <= from && dest <= this.toIndex && this.comp == comp2) {}
 
 	fsm :
 		unsorted [
